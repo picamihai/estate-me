@@ -28,6 +28,7 @@ frontend/coverage/
 .env
 .env.*
 backend/.env
+backend/test.http
 backend/.env.*
 frontend/.env
 frontend/.env.*
