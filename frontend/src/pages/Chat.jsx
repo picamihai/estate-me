@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from "react";
 import { io } from "socket.io-client";
 import { Send } from "lucide-react";
-import { API_URL } from "../config/api";
+import { SOCKET_URL } from "../config/api";
 import { getCurrentUser } from "../utils/auth";
 
 export default function Chat() {
     const user = getCurrentUser();
 
     const socket = useMemo(() => {
-        return io(API_URL, {
+        return io(SOCKET_URL, {
             transports: ["websocket", "polling"],
         });
     }, []);
