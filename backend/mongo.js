@@ -1,13 +1,24 @@
 const mongoose = require("mongoose");
-const { getRequiredEnv } = require("./config/env");
 
-const MONGO_URL = getRequiredEnv("MONGO_URL");
+async function connectMongo() {
+    const mongoUrl = process.env.MONGO_URL;
 
-module.exports = async function connectMongo() {
+    if (!mongoUrl) {
+        console.error("MongoDB connection failed: MONGO_URL is missing");
+        return;
+    }
+
     try {
-        await mongoose.connect(MONGO_URL);
+        console.log("Connecting to MongoDB...");
+
+        await mongoose.connect(mongoUrl, {
+            serverSelectionTimeoutMS: 10000,
+        });
+
         console.log("MongoDB connected");
     } catch (error) {
-        console.error("MongoDB connection error:", error);
+        console.error("MongoDB connection failed:", error.message);
     }
-};
+}
+
+module.exports = connectMongo;
