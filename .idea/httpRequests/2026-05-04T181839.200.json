@@ -1,0 +1,8 @@
+{
+  "id": "f4cec51c-a6b4-4bde-bc4a-23505883a7bb",
+  "username": "user",
+  "role": "USER",
+  "permissions": [
+    "READ_PROPERTY"
+  ]
+}

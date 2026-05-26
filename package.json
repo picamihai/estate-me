@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "npm run backend && npm run frontend",
+    "backend": "cd backend && docker compose up -d",
+    "frontend": "cd frontend && npm run dev -- --host 0.0.0.0",
+    "stop": "cd backend && docker compose stop",
+    "logs": "cd backend && docker compose logs -f"
+  }
+}

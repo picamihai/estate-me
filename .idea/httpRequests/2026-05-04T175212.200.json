@@ -1,0 +1,11 @@
+{
+  "id": "fa96b227-e8bb-4212-ab40-38548b0f586a",
+  "username": "admin",
+  "role": "ADMIN",
+  "permissions": [
+    "CREATE_PROPERTY",
+    "READ_PROPERTY",
+    "UPDATE_PROPERTY",
+    "DELETE_PROPERTY"
+  ]
+}

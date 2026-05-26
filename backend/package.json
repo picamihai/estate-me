@@ -1,0 +1,35 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "EstateMe backend API",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --runInBand",
+    "test:coverage": "jest --coverage --runInBand",
+    "seed": "node prisma/seed.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.10.2",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.1",
+    "pg": "^8.20.0",
+    "prisma": "^7.8.0",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3"
+  },
+  "devDependencies": {
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2"
+  }
+}

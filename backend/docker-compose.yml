@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: estateme-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: estatemate
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  mongo:
+    image: mongo:7
+    container_name: estateme-mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: .
+    container_name: estateme-backend
+    restart: always
+    depends_on:
+      - postgres
+      - mongo
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/estatemate?schema=public"
+      MONGO_URL: "mongodb://mongo:27017/estatemate_chat"
+      JWT_SECRET: "super-secret-dev-key"
+      JWT_EXPIRES_IN: "30m"
+      USE_HTTPS: "true"
+      FRONTEND_URL: "http://localhost:5173"
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+
+volumes:
+  postgres_data:
+  mongo_data:

@@ -1,0 +1,12 @@
+[
+  {
+    "id": "91de8534-5c17-4572-b7e4-cc4bfa985d4c",
+    "userId": "f4cec51c-a6b4-4bde-bc4a-23505883a7bb",
+    "username": "user",
+    "groupId": "feae2f48-3dfd-42bf-a3f6-64a5ea28d765",
+    "role": "USER",
+    "reason": "User performed 3 or more forbidden actions within 5 minutes.",
+    "resolved": false,
+    "createdAt": "2026-05-04T15:20:09.025Z"
+  }
+]

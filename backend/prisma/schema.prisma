@@ -1,0 +1,125 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Location {
+  id         String     @id @default(uuid())
+  city       String
+  address    String?
+  properties Property[]
+}
+
+model Property {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  price       Int
+  status      Status   @default(AVAILABLE)
+  createdAt   DateTime @default(now())
+
+  locationId String
+  location   Location @relation(fields: [locationId], references: [id])
+
+  viewings Viewing[]
+}
+
+model Viewing {
+  id     String @id @default(uuid())
+  date   String
+  client String
+
+  status ViewingStatus @default(PENDING)
+
+  requestedById       String?
+  requestedByUsername String?
+
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+}
+
+enum ViewingStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  COMPLETED
+}
+
+model User {
+  id       String @id @default(uuid())
+  username String @unique
+  password String
+  roleId   String
+  role     Role   @relation(fields: [roleId], references: [id])
+}
+
+model Role {
+  id          String           @id @default(uuid())
+  name        String           @unique
+  users       User[]
+  permissions RolePermission[]
+}
+
+model Permission {
+  id    String           @id @default(uuid())
+  name  String           @unique
+  roles RolePermission[]
+}
+
+model RolePermission {
+  roleId       String
+  permissionId String
+
+  role       Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@id([roleId, permissionId])
+}
+
+model ActionLog {
+  id String @id @default(uuid())
+
+  userId   String?
+  username String?
+  groupId  String?
+  role     String?
+
+  actionInformation String
+  resource          String?
+  resourceId        String?
+  ipAddress         String?
+
+  timestamp DateTime @default(now())
+}
+
+model ObservationList {
+  id String @id @default(uuid())
+
+  userId   String?
+  username String?
+  groupId  String?
+  role     String?
+
+  reason   String
+  resolved Boolean @default(false)
+
+  createdAt DateTime @default(now())
+}
+
+model AuthCode {
+  id        String   @id @default(uuid())
+  username  String
+  code      String
+  type      String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+enum Status {
+  AVAILABLE
+  SOLD
+}

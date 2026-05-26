@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "id": "1ed3a789-966d-4f3c-b9c8-922b9a75258f",
+      "title": "661 Lubowitz Fords",
+      "description": "Laudantium consectetur illum.",
+      "price": 292665,
+      "status": "AVAILABLE",
+      "createdAt": "2026-05-03T16:00:25.532Z",
+      "location": "Metzfort",
+      "address": ""
+    },
+    {
+      "id": "8c6f5f40-96c5-48eb-9ba7-fd8c629d6add",
+      "title": "133 Wyman Crescent",
+      "description": "Dignissimos voluptas modi.",
+      "price": 325597,
+      "status": "AVAILABLE",
+      "createdAt": "2026-05-03T16:00:22.524Z",
+      "location": "Thompsoncester",
+      "address": ""
+    },
+    {
+      "id": "2f562d24-050a-4c8b-aa73-f0a47862b258",
+      "title": "800 Ernestine Vista",
+      "description": "Quod recusandae nulla nihil quaerat quia quaerat eius.",
+      "price": 140965,
+      "status": "AVAILABLE",
+      "createdAt": "2026-05-03T16:00:19.577Z",
+      "location": "Fort Billy",
+      "address": ""
+    },
+    {
+      "id": "77f5d8f7-10c1-4302-8a4b-97d5db06a875",
+      "title": "64157 Carmella Hollow",
+      "description": "Laboriosam eius quisquam consequuntur minima.",
+      "price": 207115,
+      "status": "SOLD",
+      "createdAt": "2026-05-03T15:58:06.288Z",
+      "location": "North Ernaboro",
+      "address": ""
+    },
+    {
+      "id": "f333fddb-98a0-4c5a-9073-1202eb56d56d",
+      "title": "222",
+      "description": "2222",
+      "price": 3333,
+      "status": "AVAILABLE",
+      "createdAt": "2026-05-03T15:36:23.310Z",
+      "location": "4444",
+      "address": ""
+    }
+  ],
+  "page": 0,
+  "size": 5
+}

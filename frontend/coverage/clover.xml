@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1779805271093" clover="3.2.0">
+  <project timestamp="1779805271093" name="All files">
+    <metrics statements="213" coveredstatements="185" conditionals="151" coveredconditionals="110" methods="46" coveredmethods="37" elements="410" coveredelements="332" complexity="0" loc="213" ncloc="213" packages="6" files="10" classes="10"/>
+    <package name="assets">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="estateme-logo.png" path="/Users/pica/Documents/estate-me/frontend/src/assets/estateme-logo.png">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="components">
+      <metrics statements="6" coveredstatements="6" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="2"/>
+      <file name="Logo.jsx" path="/Users/pica/Documents/estate-me/frontend/src/components/Logo.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="4" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="4" count="200" type="stmt"/>
+        <line num="10" count="200" type="stmt"/>
+      </file>
+      <file name="PropertiesChart.jsx" path="/Users/pica/Documents/estate-me/frontend/src/components/PropertiesChart.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="4" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="7" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="config">
+      <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="3" methods="0" coveredmethods="0"/>
+      <file name="api.js" path="/Users/pica/Documents/estate-me/frontend/src/config/api.js">
+        <metrics statements="4" coveredstatements="4" conditionals="6" coveredconditionals="3" methods="0" coveredmethods="0"/>
+        <line num="2" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="7" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="4" type="cond" truecount="1" falsecount="1"/>
+      </file>
+    </package>
+    <package name="pages">
+      <metrics statements="148" coveredstatements="141" conditionals="114" coveredconditionals="80" methods="23" coveredmethods="23"/>
+      <file name="ForgotPassword.jsx" path="/Users/pica/Documents/estate-me/frontend/src/pages/ForgotPassword.jsx">
+        <metrics statements="40" coveredstatements="40" conditionals="32" coveredconditionals="25" methods="6" coveredmethods="6"/>
+        <line num="7" count="69" type="stmt"/>
+        <line num="9" count="69" type="stmt"/>
+        <line num="10" count="69" type="stmt"/>
+        <line num="11" count="69" type="stmt"/>
+        <line num="12" count="69" type="stmt"/>
+        <line num="14" count="69" type="stmt"/>
+        <line num="15" count="69" type="stmt"/>
+        <line num="16" count="69" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="35" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="36" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="40" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="43" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="5" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="70" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="74" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="75" count="2" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="78" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="80" count="2" type="stmt"/>
+        <line num="84" count="69" type="stmt"/>
+        <line num="103" count="23" type="stmt"/>
+        <line num="129" count="12" type="stmt"/>
+        <line num="142" count="14" type="stmt"/>
+      </file>
+      <file name="Login.jsx" path="/Users/pica/Documents/estate-me/frontend/src/pages/Login.jsx">
+        <metrics statements="44" coveredstatements="44" conditionals="28" coveredconditionals="23" methods="7" coveredmethods="7"/>
+        <line num="7" count="83" type="stmt"/>
+        <line num="9" count="83" type="stmt"/>
+        <line num="11" count="83" type="stmt"/>
+        <line num="12" count="83" type="stmt"/>
+        <line num="14" count="83" type="stmt"/>
+        <line num="15" count="83" type="stmt"/>
+        <line num="16" count="83" type="stmt"/>
+        <line num="18" count="83" type="stmt"/>
+        <line num="19" count="83" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="26" count="5" type="stmt"/>
+        <line num="27" count="5" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="40" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="41" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="4" type="stmt"/>
+        <line num="45" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="46" count="5" type="stmt"/>
+        <line num="48" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="50" count="5" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="73" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="74" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="82" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="88" count="83" type="stmt"/>
+        <line num="106" count="25" type="stmt"/>
+        <line num="118" count="25" type="stmt"/>
+        <line num="148" count="12" type="stmt"/>
+        <line num="162" count="1" type="stmt"/>
+        <line num="163" count="1" type="stmt"/>
+        <line num="164" count="1" type="stmt"/>
+        <line num="165" count="1" type="stmt"/>
+        <line num="166" count="1" type="stmt"/>
+      </file>
+      <file name="Register.jsx" path="/Users/pica/Documents/estate-me/frontend/src/pages/Register.jsx">
+        <metrics statements="21" coveredstatements="21" conditionals="10" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <line num="7" count="48" type="stmt"/>
+        <line num="9" count="48" type="stmt"/>
+        <line num="10" count="48" type="stmt"/>
+        <line num="12" count="48" type="stmt"/>
+        <line num="13" count="48" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="34" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="43" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="49" count="48" type="stmt"/>
+        <line num="67" count="19" type="stmt"/>
+        <line num="80" count="19" type="stmt"/>
+      </file>
+      <file name="Statistics.jsx" path="/Users/pica/Documents/estate-me/frontend/src/pages/Statistics.jsx">
+        <metrics statements="43" coveredstatements="36" conditionals="44" coveredconditionals="24" methods="6" coveredmethods="6"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="33" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="43" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="45" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="50" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="52" count="3" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="57" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="62" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="71" count="0" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="83" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="91" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="92" count="2" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="122" count="4" type="stmt"/>
+        <line num="151" count="4" type="stmt"/>
+        <line num="164" count="4" type="stmt"/>
+        <line num="166" count="4" type="stmt"/>
+        <line num="219" count="3" type="stmt"/>
+        <line num="221" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="42" coveredstatements="21" conditionals="13" coveredconditionals="10" methods="16" coveredmethods="7"/>
+      <file name="propertyService.js" path="/Users/pica/Documents/estate-me/frontend/src/services/propertyService.js">
+        <metrics statements="42" coveredstatements="21" conditionals="13" coveredconditionals="10" methods="16" coveredmethods="7"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="10" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="21" count="7" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="28" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="39" count="6" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="92" count="1" type="stmt"/>
+        <line num="117" count="1" type="stmt"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="148" count="1" type="stmt"/>
+        <line num="152" count="1" type="stmt"/>
+        <line num="163" count="1" type="stmt"/>
+        <line num="175" count="1" type="stmt"/>
+        <line num="179" count="0" type="stmt"/>
+        <line num="193" count="0" type="stmt"/>
+        <line num="197" count="0" type="stmt"/>
+        <line num="222" count="0" type="stmt"/>
+        <line num="226" count="0" type="stmt"/>
+        <line num="251" count="0" type="stmt"/>
+        <line num="255" count="0" type="stmt"/>
+        <line num="282" count="0" type="stmt"/>
+        <line num="286" count="0" type="stmt"/>
+        <line num="303" count="0" type="stmt"/>
+        <line num="307" count="0" type="stmt"/>
+        <line num="324" count="0" type="stmt"/>
+        <line num="328" count="0" type="stmt"/>
+        <line num="345" count="0" type="stmt"/>
+        <line num="349" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="13" coveredstatements="13" conditionals="8" coveredconditionals="8" methods="5" coveredmethods="5"/>
+      <file name="auth.js" path="/Users/pica/Documents/estate-me/frontend/src/utils/auth.js">
+        <metrics statements="13" coveredstatements="13" conditionals="8" coveredconditionals="8" methods="5" coveredmethods="5"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="4" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="28" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>

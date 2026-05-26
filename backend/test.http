@@ -1,0 +1,670 @@
+@baseUrl = https://localhost:3000
+@propertyId = paste-property-id-here
+@viewingId = paste-viewing-id-here
+@observationId = paste-observation-id-here
+
+### LOGIN admin - step 1
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+> {%
+    client.global.set("adminLoginSessionId", response.body.loginSessionId);
+    client.global.set("adminCode", response.body.devCode);
+%}
+
+###
+
+### VERIFY admin - step 2
+POST {{baseUrl}}/auth/login/verify
+Content-Type: application/json
+
+{
+  "loginSessionId": "{{adminLoginSessionId}}",
+  "code": "{{adminCode}}"
+}
+
+> {%
+    client.global.set("adminToken", response.body.token);
+%}
+
+###
+
+### LOGIN normal user - step 1
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+> {%
+    client.global.set("userLoginSessionId", response.body.loginSessionId);
+    client.global.set("userCode", response.body.devCode);
+%}
+
+###
+
+### VERIFY normal user - step 2
+POST {{baseUrl}}/auth/login/verify
+Content-Type: application/json
+
+{
+  "loginSessionId": "{{userLoginSessionId}}",
+  "code": "{{userCode}}"
+}
+
+> {%
+    client.global.set("userToken", response.body.token);
+%}
+
+###
+
+### REGISTER new user
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser123",
+  "password": "testpass"
+}
+
+###
+
+### FORGOT PASSWORD
+POST {{baseUrl}}/auth/forgot-password
+Content-Type: application/json
+
+{
+  "username": "user"
+}
+
+> {%
+    client.global.set("resetCode", response.body.devCode);
+%}
+
+###
+
+### RESET PASSWORD
+POST {{baseUrl}}/auth/reset-password
+Content-Type: application/json
+
+{
+  "username": "user",
+  "code": "{{resetCode}}",
+  "newPassword": "user123"
+}
+
+###
+
+### GET all properties
+GET {{baseUrl}}/properties
+
+###
+
+### GET statistics
+GET {{baseUrl}}/properties/statistics
+
+###
+
+### CREATE property as admin
+POST {{baseUrl}}/properties
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "New House",
+  "description": "Nice place",
+  "price": 100000,
+  "location": "Cluj",
+  "status": "AVAILABLE"
+}
+
+###
+
+### CREATE property as normal user - FAIL
+POST {{baseUrl}}/properties
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "title": "Blocked House",
+  "description": "Should fail",
+  "price": 100000,
+  "location": "Cluj",
+  "status": "AVAILABLE"
+}
+
+###
+
+### CREATE property without token - FAIL
+POST {{baseUrl}}/properties
+Content-Type: application/json
+
+{
+  "title": "Blocked House",
+  "description": "Should fail",
+  "price": 100000,
+  "location": "Cluj",
+  "status": "AVAILABLE"
+}
+
+###
+
+### CREATE property invalid as admin
+POST {{baseUrl}}/properties
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "a",
+  "price": -10,
+  "location": ""
+}
+
+###
+
+### GET property by ID existing
+GET {{baseUrl}}/properties/{{propertyId}}
+
+###
+
+### GET property by ID not existing
+GET {{baseUrl}}/properties/00000000-0000-0000-0000-000000000000
+
+###
+
+### UPDATE property as admin
+PUT {{baseUrl}}/properties/{{propertyId}}
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "Updated House",
+  "description": "Updated desc",
+  "price": 150000,
+  "location": "Cluj",
+  "status": "SOLD"
+}
+
+###
+
+### UPDATE property as normal user - FAIL
+PUT {{baseUrl}}/properties/{{propertyId}}
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "title": "User Update",
+  "description": "Should fail",
+  "price": 150000,
+  "location": "Cluj",
+  "status": "SOLD"
+}
+
+###
+
+### UPDATE property without token - FAIL
+PUT {{baseUrl}}/properties/{{propertyId}}
+Content-Type: application/json
+
+{
+  "title": "No Login Update",
+  "description": "Should fail",
+  "price": 150000,
+  "location": "Cluj",
+  "status": "SOLD"
+}
+
+###
+
+### UPDATE property invalid as admin
+PUT {{baseUrl}}/properties/{{propertyId}}
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "a",
+  "price": -10,
+  "location": ""
+}
+
+###
+
+### UPDATE property not found as admin
+PUT {{baseUrl}}/properties/00000000-0000-0000-0000-000000000000
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "title": "Test House",
+  "description": "Should not update",
+  "price": 100000,
+  "location": "Cluj",
+  "status": "AVAILABLE"
+}
+
+###
+
+### DELETE property as normal user - FAIL
+DELETE {{baseUrl}}/properties/{{propertyId}}
+Authorization: Bearer {{userToken}}
+
+###
+
+### DELETE property without token - FAIL
+DELETE {{baseUrl}}/properties/{{propertyId}}
+
+###
+
+### DELETE property as admin
+DELETE {{baseUrl}}/properties/{{propertyId}}
+Authorization: Bearer {{adminToken}}
+
+###
+
+### DELETE property not existing as admin
+DELETE {{baseUrl}}/properties/00000000-0000-0000-0000-000000000000
+Authorization: Bearer {{adminToken}}
+
+###
+
+### GET properties with pagination page 0
+GET {{baseUrl}}/properties?page=0&size=1
+
+###
+
+### GET properties with pagination page 1
+GET {{baseUrl}}/properties?page=1&size=1
+
+###
+
+### GET properties invalid pagination
+GET {{baseUrl}}/properties?page=-1&size=0
+
+###
+
+### FILTER by status
+GET {{baseUrl}}/properties?status=SOLD
+
+###
+
+### FILTER by location
+GET {{baseUrl}}/properties?location=cluj
+
+###
+
+### FILTER by min/max price
+GET {{baseUrl}}/properties?minPrice=100000&maxPrice=200000
+
+###
+
+### FILTER combined
+GET {{baseUrl}}/properties?status=SOLD&location=cluj&minPrice=100000&maxPrice=200000
+
+###
+
+### START GENERATOR as admin
+POST {{baseUrl}}/properties/start-generator
+Authorization: Bearer {{adminToken}}
+
+###
+
+### START GENERATOR as normal user - FAIL
+POST {{baseUrl}}/properties/start-generator
+Authorization: Bearer {{userToken}}
+
+###
+
+### START GENERATOR without token - FAIL
+POST {{baseUrl}}/properties/start-generator
+
+###
+
+### GET generated properties
+GET {{baseUrl}}/properties
+
+###
+
+### STOP GENERATOR as admin
+POST {{baseUrl}}/properties/stop-generator
+Authorization: Bearer {{adminToken}}
+
+###
+
+### STOP GENERATOR as normal user - FAIL
+POST {{baseUrl}}/properties/stop-generator
+Authorization: Bearer {{userToken}}
+
+###
+
+### GRAPHQL get properties
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+
+{
+  "query": "query { properties { id title description price location status } }"
+}
+
+###
+
+### GRAPHQL get property by ID with viewings
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+
+{
+  "query": "query ($id: String!) { property(id: $id) { id title description price location status viewings { id propertyId date client status requestedByUsername } } }",
+  "variables": {
+    "id": "{{propertyId}}"
+  }
+}
+
+###
+
+### GRAPHQL stats
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+
+{
+  "query": "query { stats { total totalValue average available sold } }"
+}
+
+###
+
+### GRAPHQL create property as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($title: String!, $description: String, $price: Int!, $location: String!, $status: String) { addProperty(title: $title, description: $description, price: $price, location: $location, status: $status) { id title description price location status } }",
+  "variables": {
+    "title": "GraphQL House",
+    "description": "Created through GraphQL",
+    "price": 180000,
+    "location": "Groningen",
+    "status": "AVAILABLE"
+  }
+}
+
+###
+
+### GRAPHQL create property as user - FAIL
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "query": "mutation { addProperty(title: \"Blocked GraphQL House\", price: 100000, location: \"Cluj\") { id } }"
+}
+
+###
+
+### GRAPHQL update property as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($id: String!) { updateProperty(id: $id, title: \"Updated GraphQL House\", description: \"Updated through GraphQL\", price: 190000, location: \"Cluj\", status: \"SOLD\") { id title description price location status } }",
+  "variables": {
+    "id": "{{propertyId}}"
+  }
+}
+
+###
+
+### GRAPHQL update property as user - FAIL
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "query": "mutation ($id: String!) { updateProperty(id: $id, title: \"Blocked Update\") { id title } }",
+  "variables": {
+    "id": "{{propertyId}}"
+  }
+}
+
+###
+
+### GRAPHQL delete property as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($id: String!) { deleteProperty(id: $id) }",
+  "variables": {
+    "id": "{{propertyId}}"
+  }
+}
+
+###
+
+### GRAPHQL delete property as user - FAIL
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "query": "mutation ($id: String!) { deleteProperty(id: $id) }",
+  "variables": {
+    "id": "{{propertyId}}"
+  }
+}
+
+###
+
+### GRAPHQL request viewing as normal user
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "query": "mutation ($propertyId: String!, $date: String!, $client: String!) { requestViewing(propertyId: $propertyId, date: $date, client: $client) { id propertyId date client status requestedByUsername } }",
+  "variables": {
+    "propertyId": "{{propertyId}}",
+    "date": "2027-01-01 10:00",
+    "client": "user"
+  }
+}
+
+###
+
+### GRAPHQL get all viewings as user
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "query": "query { viewings { id propertyId date client status requestedByUsername } }"
+}
+
+###
+
+### GRAPHQL get all viewings as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "query { viewings { id propertyId date client status requestedByUsername } }"
+}
+
+###
+
+### GRAPHQL add approved viewing as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($propertyId: String!, $date: String!, $client: String!) { addViewing(propertyId: $propertyId, date: $date, client: $client) { id propertyId date client status requestedByUsername } }",
+  "variables": {
+    "propertyId": "{{propertyId}}",
+    "date": "2027-01-03 11:30",
+    "client": "Admin Client"
+  }
+}
+
+###
+
+### GRAPHQL add approved viewing as user - FAIL
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "query": "mutation ($propertyId: String!, $date: String!, $client: String!) { addViewing(propertyId: $propertyId, date: $date, client: $client) { id } }",
+  "variables": {
+    "propertyId": "{{propertyId}}",
+    "date": "2027-01-01 10:00",
+    "client": "Blocked User"
+  }
+}
+
+###
+
+### GRAPHQL approve viewing as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($id: String!) { approveViewing(id: $id) { id status } }",
+  "variables": {
+    "id": "{{viewingId}}"
+  }
+}
+
+###
+
+### GRAPHQL reject viewing as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($id: String!) { rejectViewing(id: $id) { id status } }",
+  "variables": {
+    "id": "{{viewingId}}"
+  }
+}
+
+###
+
+### GRAPHQL complete viewing as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($id: String!) { completeViewing(id: $id) { id status } }",
+  "variables": {
+    "id": "{{viewingId}}"
+  }
+}
+
+###
+
+### GRAPHQL update viewing as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($id: String!, $propertyId: String!, $date: String!, $client: String!) { updateViewing(id: $id, propertyId: $propertyId, date: $date, client: $client) { id propertyId date client status } }",
+  "variables": {
+    "id": "{{viewingId}}",
+    "propertyId": "{{propertyId}}",
+    "date": "2027-01-02 12:00",
+    "client": "Updated Client"
+  }
+}
+
+###
+
+### GRAPHQL delete viewing as admin
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{adminToken}}
+
+{
+  "query": "mutation ($id: String!) { deleteViewing(id: $id) }",
+  "variables": {
+    "id": "{{viewingId}}"
+  }
+}
+
+###
+
+### GRAPHQL request viewing with past date - FAIL
+POST {{baseUrl}}/graphql
+Content-Type: application/json
+Authorization: Bearer {{userToken}}
+
+{
+  "query": "mutation ($propertyId: String!, $date: String!, $client: String!) { requestViewing(propertyId: $propertyId, date: $date, client: $client) { id } }",
+  "variables": {
+    "propertyId": "{{propertyId}}",
+    "date": "2020-01-01 10:00",
+    "client": "user"
+  }
+}
+
+###
+
+### GET action logs as admin
+GET {{baseUrl}}/logs
+Authorization: Bearer {{adminToken}}
+
+###
+
+### GET action logs as normal user - FAIL
+GET {{baseUrl}}/logs
+Authorization: Bearer {{userToken}}
+
+###
+
+### GET action logs without token - FAIL
+GET {{baseUrl}}/logs
+
+###
+
+### GET observation list as admin
+GET {{baseUrl}}/logs/observations
+Authorization: Bearer {{adminToken}}
+
+###
+
+### GET observation list as normal user - FAIL
+GET {{baseUrl}}/logs/observations
+Authorization: Bearer {{userToken}}
+
+###
+
+### GET observation list without token - FAIL
+GET {{baseUrl}}/logs/observations
+
+###
+
+### RESOLVE observation as admin
+PUT {{baseUrl}}/logs/observations/{{observationId}}/resolve
+Authorization: Bearer {{adminToken}}
+
+###
+
+### RESOLVE observation as normal user - FAIL
+PUT {{baseUrl}}/logs/observations/{{observationId}}/resolve
+Authorization: Bearer {{userToken}}
+
+###
+
+### RESOLVE observation without token - FAIL
+PUT {{baseUrl}}/logs/observations/{{observationId}}/resolve
