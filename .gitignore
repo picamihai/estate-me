@@ -44,7 +44,7 @@ backend/certs/
 .DS_Store
 Thumbs.db
 
-# Editor directories and files
+# Editor files
 .idea/
 frontend/.idea/
 backend/.idea/
@@ -56,15 +56,21 @@ backend/.idea/
 *.sln
 *.sw?
 
-# Playwright
+# Playwright generated output
 test-results/
 playwright-report/
 blob-report/
+frontend/test-results/
+frontend/playwright-report/
+frontend/blob-report/
 playwright/.cache/
 playwright/.auth/
+frontend/playwright/.cache/
+frontend/playwright/.auth/
 
 # Vite cache
 .vite/
+frontend/.vite/
 
 # Database/local generated files
 *.db
